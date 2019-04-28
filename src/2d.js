@@ -73,6 +73,4 @@ class Rect2d {
   }
 }
 
-module.exports.Point2d = Point2d
-module.exports.Line2d = Line2d
-module.exports.Rect2d = Rect2d
+export {Point2d, Line2d, Rect2d}

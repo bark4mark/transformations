@@ -1,4 +1,5 @@
-const Point2d = require('./2d')
+import {Point2d} from './2d'
+import {toRadians} from './utils'
 
 /**
  * Will rotate a point around 0,0 and return a new translated point
@@ -18,15 +19,6 @@ const rotate = (point, angleAsDegrees) => {
 }
 
 /**
- * Will convert an angle to radians
- * 
- * @param {Number} angle The angle to convert 
- */
-const toRadians = (angle) => {
-  return (Math.PI / 180) * angle
-}
-
-/**
  * Translate a point to another
  * 
  * @param {Number} x The x value for translation
@@ -37,6 +29,4 @@ const translate = (x, y, point) => {
   return new Point2d(point.x + x, point.y + y)
 }
 
-module.exports.rotate = rotate
-module.exports.toRadians = toRadians
-module.exports.translate = translate
+export{rotate, translate}
