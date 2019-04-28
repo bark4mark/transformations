@@ -15,7 +15,7 @@ const rotate = (point, angleAsDegrees) => {
   const rotatedX = (point.x * cos) - (point.y * sin)
   const rotatedY = (point.x * sin) + (point.y * cos)
 
-  return new Point2d(rotatedX, rotatedY)
+  return new Point2d(Math.floor(rotatedX), Math.floor(rotatedY))
 }
 
 /**

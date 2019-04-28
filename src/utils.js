@@ -1,3 +1,5 @@
+import {Point2d} from './2d'
+
 /**
  * Will return the center point of the values passed in
  * 
