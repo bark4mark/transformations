@@ -10,23 +10,28 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const canvas = document.getElementById('point')
   const context = canvas.getContext('2d')
   const point = new Point2d(center.x + 50, center.y)
-  console.log(point)
-  point.draw(context)
-  const rotated = rotate(point, 20)
-  const translated = translate(point.x, point.y, rotated)
-  console.log(translated)
-  translated.draw(context)
-
-
-  // const animate = () => {
-  //   center.draw(context)
-
-  //   const point = new Point2d(center.x + 50, center.y)
-  //   point.draw(context)
-  //   translate(point.x, point.y, rotate(point, 90)).draw(context)
-
-  //   requestAnimationFrame(animate)
-  // }
+  let angle = 0
+  let secondAngle = 0
   
-  // animate(context)
+  const animate = () => {
+    context.clearRect(0,0,canvasWidth, canvasHeight)
+    if(angle > 359)
+      angle = 0
+
+    if(secondAngle > 359)
+      secondAngle = 0
+    
+    center.draw(context)
+
+    const rotated = rotate(center, point, angle)
+    rotated.draw(context)
+    const moon = new Point2d(rotated.x + 50, rotated.y)
+    rotate(rotated, moon, secondAngle).draw(context)
+
+    angle = angle + 5
+    secondAngle = secondAngle + 1
+    requestAnimationFrame(animate)
+  }
+  
+  animate(context)
 })

@@ -17,7 +17,7 @@ class Point2d {
    * @param {Object} context The 2d context to draw on
    */
   draw(context) {
-    context.fillRect(this.x, this.y, 1, 1)
+    context.fillRect(this.x, this.y, 2, 2)
   }
 }
 

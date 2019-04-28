@@ -2,18 +2,20 @@ import {Point2d} from './2d'
 import {toRadians} from './utils'
 
 /**
- * Will rotate a point around 0,0 and return a new translated point
+ * Will rotate a point around some center point and return a new translated point
  * 
- * @param {Object} point The point to rotate
+ * @param {Point2d} centerPoint The point to rotate around
+ * @param {Point2d} point The point to rotate
  * @param {Number} angleAsDegrees The angle in degrees to rotate the point
  */
-const rotate = (point, angleAsDegrees) => {
+const rotate = (centerPoint, point, angleAsDegrees) => {
   const angleAsRadians = toRadians(angleAsDegrees),
     cos = Math.cos(angleAsRadians),
     sin = Math.sin(angleAsRadians)
 
-  const rotatedX = (point.x * cos) - (point.y * sin)
-  const rotatedY = (point.x * sin) + (point.y * cos)
+  const rotatedX = (cos * (point.x - centerPoint.x)) + (sin * (point.y - centerPoint.y)) + centerPoint.x
+  const rotatedY = (cos * (point.y - centerPoint.y)) + (sin * (point.x - centerPoint.x)) + centerPoint.y
+
 
   return new Point2d(Math.floor(rotatedX), Math.floor(rotatedY))
 }
